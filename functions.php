@@ -1,4 +1,5 @@
 <?php
+require get_template_directory() . '/inc/costumizer.php';
 
 function wpdevs_load_scripts(){
     wp_enqueue_style( 'wpdevs-style', get_stylesheet_uri(), array(), filemtime( get_template_directory() . '/style.css' ), 'all' );
@@ -76,4 +77,10 @@ function wpdevs_sidebars(){
             'after_title'   => '</h4>'
         )
     );
+}
+
+if(!function_exists('wp_body_open')){
+    function wp_body_open(){
+        do_action('wp_body_open');
+    }
 }
